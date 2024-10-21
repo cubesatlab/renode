@@ -69,6 +69,7 @@ This is a compilation of files added/differing in the Bitcraze fork from the mai
                     - I think it makes sense to try and make things work with the normal timer file, this feels weird and hacky to me.
                 - [STM32_Timer.cs](https://github.com/bitcraze/renode-infrastructure/blob/crazyflie/src/Emulator/Peripherals/Peripherals/Timers/STM32_Timer.cs)
                     - *Changed to allow Word to DoubleWord translation, which seems probably reasonable?*
+                    - Above change now appears in mainline repo.
     - **UI/**
         - [CommandLineInterface.cs](https://github.com/bitcraze/renode-infrastructure/blob/crazyflie/src/UI/CommandLineInterface.cs)
             - *One line change to shell behavior, will have to see what breaks without it*
