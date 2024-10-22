@@ -26,3 +26,12 @@ They are more or less derived from the instructions found in the [Renode Docs](h
         - Try runnin these commands:
             - `sudo locale-gen en_US.UTF-8`
             - `sudo update-locale LANG=en_US.UTF-8`
+
+## Running Renode with the crazyflie flight software
+
+1. Build the crazyflie flight software
+    - Instructions for doing so will depend on what software you want to run
+    - For the base Crazyflie software, see the relevents sections of their [Building and Flashing](https://github.com/bitcraze/crazyflie-firmware/blob/master/docs/building-and-flashing/build.md) guide.
+2. Move cf2.elf to the root of this repository
+3. Execute the following command to run renode and load the crazyflie script:
+    - `./renode --net scripts/single-node/crazyflie.resc`

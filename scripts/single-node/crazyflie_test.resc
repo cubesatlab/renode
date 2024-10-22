@@ -1,0 +1,11 @@
+:description: Runs the firmware (compiled with uart debug flag set) and saves the log+uart output to a logfile.
+
+logFile @logfile.log true
+logLevel 3 file
+
+include @scripts/single-node/crazyflie.resc
+
+sysbus.usart3 AddLineHook "" "Antmicro.Renode.Logging.Logger.Log(LogLevel.Error, line)"
+sysbus.usart3 AddLineHook "Free heap" "Antmicro.Renode.Emulator.Exit()"
+
+start

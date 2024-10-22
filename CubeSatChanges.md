@@ -7,7 +7,10 @@ At a minimum, it should list the files added/modified from the base Renode proje
     - *This file. Added for above reasons*
 - [`CubeSatSetup.md`](CubeSatSetup.md)
     - *Added to document setup instructions*
-
+- **platforms/**
+    - [cpus/stm32f405.repl](platforms/cpus/stm32f405.repl)
+        - *cpu definition for the STM32F405.*
+        - Based on its [data sheet](https://www.st.com/resource/en/datasheet/stm32f405rg.pdf), [the paper](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=9052405&fileOId=9052409) from the original project under Bitcraze, and the [corresponding .repl file in the Bitcraze repo](https://github.com/bitcraze/renode/blob/crazyflie/platforms/cpus/stm32f405.repl).
 
 ## Modified:
 
@@ -28,7 +31,7 @@ This is a compilation of files added/differing in the Bitcraze fork from the mai
         - *board definition for the CrazyFlie 2.1*
     - [cpus/stm32f405.repl](https://github.com/bitcraze/renode/blob/crazyflie/platforms/cpus/stm32f405.repl)
         - *cpu definition for the STM32F405.*
-        - I think this potentially should have been based on Renode's existing stm32f4.repl
+        - I think this potentially should have been based on Renode's existing [stm32f4.repl](https://github.com/renode/renode/blob/master/platforms/cpus/stm32f4.repl)
         - That approach would have it pulling in the SVD file: STM32F40x.svd.gz
         - These SVD files seem to be how Renode stores core board definitions.
         - It's possible thise deviation was due to issues encountered while using inherited defintions, but I feel it's worth trying to stick more tightly to the base implementation.

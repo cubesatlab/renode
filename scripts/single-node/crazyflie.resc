@@ -1,0 +1,45 @@
+:description: This script emulates the Bitcraze Crazyflie 2.1 platform and runs the Crazyflie firmware.
+
+mach create "CF2.1"
+machine LoadPlatformDescription @platforms/boards/crazyflie2.repl
+
+# Should be written during production
+sysbus.otp WriteString 0x7800 "0;CF21"
+
+
+# Uncomment/comment to toggle open Analyzer windows
+showAnalyzer sysbus.usart2
+#showAnalyzer sysbus.usart3
+#showAnalyzer sysbus.usart6
+#showAnalyzer sysbus.nrf
+
+sysbus LoadELF @cf2.elf
+
+emulation CreateUARTHub "syslink"
+connector Connect sysbus.usart6 syslink
+connector Connect sysbus.nrf syslink
+syslink Start
+
+machine StartGdbServer 3333
+emulation CreateServerSocketTerminal 3456 "sensors"
+connector Connect sysbus.i2c3.bmi_gyro sensors
+# emulation CreateServerSocketTerminal 3457 "syslink"
+# connector Connect sysbus.usart6 syslink
+
+# Uncomment/comment to toggle noisy LEDs logLevel
+logLevel -1 console sysbus.gpioPortD.ledB
+logLevel -1 console sysbus.gpioPortC.ledRL
+logLevel -1 console sysbus.gpioPortC.ledGL
+logLevel -1 console sysbus.gpioPortC.ledGR
+logLevel -1 console sysbus.gpioPortC.ledRR
+
+# Uncomment/comment to toggle how much information the sensors log
+# logLevel -1 console sysbus.i2c3.bmi_gyro
+# logLevel -1 console sysbus.i2c3.bmi_accel
+# logLevel -1 console sysbus.i2c3.bmp_baro
+
+# Uncomment to log function calls
+cpu LogFunctionNames true true
+
+# Two initial data samples required to pass initialization and test
+sysbus.i2c3.bmi_gyro FeedGyroSample 10 20 30 2

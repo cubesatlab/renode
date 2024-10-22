@@ -2,6 +2,7 @@ output
 obj
 bin
 
+*.elf
 *.pyc
 *.swp
 .vs
