@@ -8,10 +8,10 @@ sysbus.otp WriteString 0x7800 "0;CF21"
 
 
 # Uncomment/comment to toggle open Analyzer windows
-showAnalyzer sysbus.usart2
-#showAnalyzer sysbus.usart3
-#showAnalyzer sysbus.usart6
-#showAnalyzer sysbus.nrf
+# showAnalyzer sysbus.usart2
+showAnalyzer sysbus.usart3
+# showAnalyzer sysbus.usart6
+# showAnalyzer sysbus.nrf
 
 sysbus LoadELF @cf2.elf
 
@@ -38,8 +38,11 @@ logLevel -1 console sysbus.gpioPortC.ledRR
 # logLevel -1 console sysbus.i2c3.bmi_accel
 # logLevel -1 console sysbus.i2c3.bmp_baro
 
+# Uncomment/comment to toggle noisy i2c1 logging
+# logLevel -1 console sysbus.i2c1
+
 # Uncomment to log function calls
-cpu LogFunctionNames true true
+# cpu LogFunctionNames true true
 
 # Two initial data samples required to pass initialization and test
 sysbus.i2c3.bmi_gyro FeedGyroSample 10 20 30 2

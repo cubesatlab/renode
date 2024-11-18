@@ -114,5 +114,8 @@ sysbus:
         Tag <0x40012200 0x50> "ADC3"
         Tag <0x40012300 0xC> "ADC common"
         Tag <0x50000000 0x4000> "USB_OTG_FS"
+        // PER the stm32f4.repl tags:
+        // FLASH and USB tags are required for CubeMX-based projects to pass the initialization phase
+        Tag <0x50000010, 0x5000003f> "USB:RESET" 0x80000000
         Tag <0x40003000 0x400> "IWDG"
         Tag <0xE004200C 0x4> "Accessed from MOTORS_TIM_DBG_CFG (DBGMCU_APB2PeriphConfig)"

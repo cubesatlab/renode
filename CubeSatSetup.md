@@ -32,6 +32,23 @@ They are more or less derived from the instructions found in the [Renode Docs](h
 1. Build the crazyflie flight software
     - Instructions for doing so will depend on what software you want to run
     - For the base Crazyflie software, see the relevents sections of their [Building and Flashing](https://github.com/bitcraze/crazyflie-firmware/blob/master/docs/building-and-flashing/build.md) guide.
-2. Move cf2.elf to the root of this repository
+2. Move/link cf2.elf to the root of this repository
 3. Execute the following command to run renode and load the crazyflie script:
     - `./renode --net scripts/single-node/crazyflie.resc`
+4. Start the renode execution
+    - `(CF2.1) start`
+
+## Debugging crazyflie with renode
+
+Renode instructional page can be found [here](https://renode.readthedocs.io/en/latest/debugging/gdb.html)
+
+1. Install the correct gdb packages if not already present
+    - `sudo apt install gdb gdb-multiarch`
+2. Execute the following command to run renode and load the crazyflie script:
+    - `./renode --net scripts/single-node/crazyflie.resc`
+3. Execute gdb, using the crazyflie .elf, and connecting to the remote target exposed by renode
+    - `gdb-multiarch cf2.elf`
+    - Create any breakpoints you need
+    - `(gdb) target remote :3333`
+    - This will start the renode execution
+5. Use GDB as normal

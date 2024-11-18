@@ -8,9 +8,19 @@ At a minimum, it should list the files added/modified from the base Renode proje
 - [`CubeSatSetup.md`](CubeSatSetup.md)
     - *Added to document setup instructions*
 - **platforms/**
+    - [boards/cf2.repl](platforms/boards/cf2.repl)
+        - *board definition for the CrazyFlie 2.1*
     - [cpus/stm32f405.repl](platforms/cpus/stm32f405.repl)
         - *cpu definition for the STM32F405.*
         - Based on its [data sheet](https://www.st.com/resource/en/datasheet/stm32f405rg.pdf), [the paper](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=9052405&fileOId=9052409) from the original project under Bitcraze, and the [corresponding .repl file in the Bitcraze repo](https://github.com/bitcraze/renode/blob/crazyflie/platforms/cpus/stm32f405.repl).
+- **scripts/single-node/**
+    - [crazyflie.resc](scripts/single-node/crazyflie.resc)
+        - *cf2 board init script*
+    - [crazyflie_test.resc](scripts/single-node/crazyflie_test.resc)
+        - *cf2 board init script for testing*
+        - Running either of these above scripts requires the existence of the crazyflie's software image
+            - It expects it to be named cf2.elf, and to be living in the directory you're running from.
+            - This will be important to keep in mind for any SPARK/Ada images we create.
 
 ## Modified:
 
@@ -19,6 +29,9 @@ At a minimum, it should list the files added/modified from the base Renode proje
 
 
 ## Changes of Note in Bitcraze Fork
+There was a project undertaken by some graduate students working in conjunction with Bitcraze to create Renode emulation of the Crazyflie 2.1 back in 2021.
+There is a [Blog Post](https://www.bitcraze.io/2021/04/successful-emulation/) talking about their work, as well as their final [Paper](https://lup.lub.lu.se/luur/download?func=downloadFile&recordOId=9052405&fileOId=9052409).
+
 This is a compilation of files added/differing in the Bitcraze fork from the main repo. This may differ from the end product of the added/modified list above, as we may find there are different changes we do/don't need to make as a result of updates to the main repo or issues found in the bitcraze modifications. Each item will have a description of the changes made.
 **Note:** This may not be complete, but was compiled by going through git logs.
 
