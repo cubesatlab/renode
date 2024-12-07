@@ -38,7 +38,7 @@ They are more or less derived from the instructions found in the [Renode Docs](h
 4. Start the renode execution
     - `(CF2.1) start`
 
-## Debugging crazyflie with renode
+## Debugging with renode
 
 Renode instructional page can be found [here](https://renode.readthedocs.io/en/latest/debugging/gdb.html)
 

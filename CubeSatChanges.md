@@ -47,7 +47,7 @@ This is a compilation of files added/differing in the Bitcraze fork from the mai
         - I think this potentially should have been based on Renode's existing [stm32f4.repl](https://github.com/renode/renode/blob/master/platforms/cpus/stm32f4.repl)
         - That approach would have it pulling in the SVD file: STM32F40x.svd.gz
         - These SVD files seem to be how Renode stores core board definitions.
-        - It's possible thise deviation was due to issues encountered while using inherited defintions, but I feel it's worth trying to stick more tightly to the base implementation.
+        - It's possible this deviation was due to issues encountered while using inherited defintions, but I feel it's worth trying to stick more tightly to the base implementation.
 - **scripts/single-node/**
     - [crazyflie.resc](https://github.com/bitcraze/renode/blob/crazyflie/scripts/single-node/crazyflie.resc)
         - *cf2 board init script*

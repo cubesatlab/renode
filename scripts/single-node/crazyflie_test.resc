@@ -5,7 +5,17 @@ logLevel 3 file
 
 include @scripts/single-node/crazyflie.resc
 
+# This causes the debug output from the firmware sent to usart3 to appear as error logging
+# This allows ouptut that a build pipeline could examine to evaluate success of a firmware run
+# Logging it as Error might not be the best long term solution, Info might be better to allows
+# easier disambiguation between these console outputs and actual error messages.
 sysbus.usart3 AddLineHook "" "Antmicro.Renode.Logging.Logger.Log(LogLevel.Error, line)"
+
+# This is the line that indicates successful initialization of the normal crazyflie2 firmware
 sysbus.usart3 AddLineHook "Free heap" "Antmicro.Renode.Emulator.Exit()"
+
+# This line was used in testing because the previous one was after an infinite loop in the initialization
+# that I couldn't find a solution to.
+# sysbus.usart3 AddLineHook "of flash" "Antmicro.Renode.Emulator.Exit()"
 
 start
